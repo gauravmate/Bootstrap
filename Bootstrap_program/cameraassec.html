@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Access Camera</title>
+    <style>
+        body {
+            background-color: rgb(179, 179, 189);
+           
+        }
+
+        video {
+            border: 3px solid rgb(53, 5, 5);
+            width: 100%;
+            max-width: 400px;
+        }
+
+        .box {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        button {
+            background-color: rgb(68, 185, 101);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <video id="video" class="video" autoplay></video>
+        <br>
+        <button onclick="openCamera()">Open Camera</button>
+        <button onclick="closecamera()">Close Camera</button>
+
+    </div>
+    <script>
+        async function openCamera() {
+            const stream = await navigator.mediaDevices.getUserMedia({ video: true });
+            const videoElement = document.getElementById('video');
+            videoElement.srcObject = stream;
+        }
+        async function closecamera() {
+            const stream = await navigator.mediaDevices.getUserMedia({ video: false });
+            const videoElement = document.getElementById('video');
+            videoElement.srcObject = stream;
+        }
+    </script>
+</body>
+
+</html>

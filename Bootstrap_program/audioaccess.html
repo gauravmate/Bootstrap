@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Speaker Access</title>
+    <style>
+    #input {
+        width: 50%;
+        height: 50%;
+        border: 3px solid rgb(10, 10, 10);
+        margin-left: 400px;
+        margin-top: 30px;
+    }
+    #btn, #stopBtn {
+        display: inline-block;
+        padding: 15px 25px;
+        font-size: 16px;
+        color: #0e0d0d;
+        background-color: #3fe663;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        text-align: center;
+        text-decoration: none;
+        margin-left: 700px;
+    }
+    #stopBtn {
+        background-color: #e63f3f;
+        margin-left: 10px;
+    }
+    </style>
+</head>
+<body>
+  <div>
+    <textarea type="textarea" id="input" name="message" placeholder="Type the message here you want to listen to."></textarea>
+    <button id="btn" onclick="speak()">Speak</button>
+    <button id="stopBtn" onclick="stopSpeak()">Stop</button>
+  </div> 
+  <script>
+    function speak(){
+        var text = document.getElementById('input').value;
+        var utterance = new SpeechSynthesisUtterance(text);
+        speechSynthesis.speak(utterance);
+    }
+
+    function stopSpeak(){
+        speechSynthesis.cancel();
+    }
+  </script> 
+</body>
+</html>
